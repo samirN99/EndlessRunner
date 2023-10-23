@@ -389,13 +389,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 676782305}
-  jumpForce: 8
+  jumpForce: 15
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   feetPosition: {fileID: 731814341}
   groundDist: 0.25
-  jumpTime: 0.5
+  jumpTime: 0.3
+  FlameBoy: {fileID: 676782303}
+  crouchH: 0.5
 --- !u!50 &676782305
 Rigidbody2D:
   serializedVersion: 4
@@ -544,7 +546,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 731814340}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -11.19, y: -3, z: 0}
   m_LocalScale: {x: 0.75251, y: 0.75251, z: 0.75251}
   m_ConstrainProportionsScale: 0
@@ -711,8 +713,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 676782303}
   - {fileID: 731814341}
+  - {fileID: 676782303}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

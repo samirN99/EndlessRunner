@@ -10,6 +10,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform feetPosition;
     [SerializeField] private float groundDist = 0.25f;
     [SerializeField] private float jumpTime = 0.3f;
+    [SerializeField] private Transform FlameBoy;
+
+    //for the crouch
+    [SerializeField] private float crouchH = 0.7f;
 
     private bool isTGround = false;
     private bool isJumping = false;
@@ -18,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         isTGround = Physics2D.OverlapCircle(feetPosition.position, groundDist, groundLayer);
+
+       
 
         if (isTGround && Input.GetButtonDown("Jump"))
         {
@@ -49,5 +55,21 @@ public class PlayerMovement : MonoBehaviour
 
 
         }
+       if(isTGround && Input.GetButtonDown("Crouch"))               //CROUCHING CODE
+        {
+            FlameBoy.localScale = new Vector3(FlameBoy.localScale.x, crouchH, FlameBoy.localScale.z);
+
+        }
+
+        if (Input.GetButtonUp("Crouch"))
+        {
+            FlameBoy.localScale = new Vector3(FlameBoy.localScale.x, 1f, FlameBoy.localScale.z);
+            
+        }
+
+
+
+
+
     }
 }
