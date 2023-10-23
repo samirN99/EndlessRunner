@@ -8,12 +8,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 10f;                 //for our jump
     [SerializeField] private LayerMask groundLayer;                    // ensure player is touching the ground before next jump
     [SerializeField] private Transform feetPosition;
-    [SerializeField] private float groundDist = 0.25f;
+    [SerializeField] private float groundDist = 0.15f;
     [SerializeField] private float jumpTime = 0.3f;
     [SerializeField] private Transform FlameBoy;
 
     //for the crouch
-    [SerializeField] private float crouchH = 0.7f;
+    [SerializeField] private float crouchH = 0.2f;
 
     private bool isTGround = false;
     private bool isJumping = false;
@@ -60,10 +60,10 @@ public class PlayerMovement : MonoBehaviour
             FlameBoy.localScale = new Vector3(FlameBoy.localScale.x, crouchH, FlameBoy.localScale.z);
 
         }
-
+       
         if (Input.GetButtonUp("Crouch"))
         {
-            FlameBoy.localScale = new Vector3(FlameBoy.localScale.x, 1f, FlameBoy.localScale.z);
+            FlameBoy.localScale = new Vector3(FlameBoy.localScale.x, 0.5f, FlameBoy.localScale.z);
             
         }
 

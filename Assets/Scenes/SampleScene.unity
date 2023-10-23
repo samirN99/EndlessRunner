@@ -370,8 +370,8 @@ Transform:
   m_GameObject: {fileID: 676782302}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -11.2, y: -2.427, z: -0.015603656}
-  m_LocalScale: {x: 0.5826925, y: 0.53787, z: 0.71716}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1538818065}
   m_RootOrder: -1
@@ -397,7 +397,7 @@ MonoBehaviour:
   groundDist: 0.25
   jumpTime: 0.3
   FlameBoy: {fileID: 676782303}
-  crouchH: 0.5
+  crouchH: 0.25
 --- !u!50 &676782305
 Rigidbody2D:
   serializedVersion: 4
@@ -713,8 +713,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 731814341}
   - {fileID: 676782303}
+  - {fileID: 731814341}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
