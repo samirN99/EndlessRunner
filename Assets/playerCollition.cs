@@ -8,7 +8,9 @@ public class playerCollition : MonoBehaviour
     {
       if(other.transform.tag == "Obstacle")
         {
-        Destroy(gameObject);
+            Debug.Log("Collision with Obstacle detected");
+            Destroy(gameObject);
+            GameManager.Instance.GameOver();
       }
     }
 }
