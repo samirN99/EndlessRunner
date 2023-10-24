@@ -130,9 +130,9 @@ GameObject:
   m_Component:
   - component: {fileID: 97976530}
   - component: {fileID: 97976531}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ObstacleSpawner
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,8 +168,8 @@ MonoBehaviour:
   - {fileID: 7418112238340649811, guid: 2280665a5cb866346898522b3dc76145, type: 3}
   - {fileID: 3715203781355990535, guid: 807e6d9fcbbb01e40af0fd3a829a44fc, type: 3}
   - {fileID: 2811905971466357439, guid: 52610aa8ddea3094aa24eee547c23229, type: 3}
-  obstacleSpawnTime: 3
-  obstacleSpeed: 3
+  obstacleSpawnTime: 2
+  obstacleSpeed: 4
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 676782304}
   m_Layer: 7
   m_Name: FlameBoy
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -563,7 +563,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 5003e8caced183e478883159df12d484, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.06287718, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -744,6 +744,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1538818065}
+  - component: {fileID: 1538818066}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -768,3 +769,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1538818066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538818064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c786613a50325c94284e599e2e6f5af6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
