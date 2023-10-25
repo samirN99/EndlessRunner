@@ -9,6 +9,9 @@ public class UIManager : MonoBehaviour
    [SerializeField] private GameObject startMenuUI;                              //  play button
    [SerializeField] private GameObject gameOverUI;                               // game over screen
 
+    [SerializeField] private TextMeshProUGUI gameOverHighscoreUI;
+    [SerializeField] private TextMeshProUGUI gameOverscoreUI;
+
 
     GameManager gm;                                             // game manager reference
 
@@ -27,6 +30,8 @@ public class UIManager : MonoBehaviour
     public void ActivateGameOverUI()
     { 
     gameOverUI.SetActive(true);                                // Activate the game over screen when player dies
+        gameOverscoreUI.text = "Score: " + gm.PrettyScore();
+        gameOverHighscoreUI.text = "HighScore: " + gm.PrettyHighScore();
     }
     
 

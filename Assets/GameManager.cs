@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public float currentScore = 0f;                                                        // The score atm of the player set to 0 by default
     public bool isPlaying = false;
 
+    public SaveData data;
+
     private void Update()
     {
         if(isPlaying)
@@ -36,24 +38,63 @@ public class GameManager : MonoBehaviour
     public UnityEvent onGameOver = new UnityEvent();
 
 
+    private void Start()
+    {
+        string LoadedData = Save.Load("save");      
+        
+                                                                // Load the save data
+        if (LoadedData != null)
+        {                                                         // if we have save data
+            data = JsonUtility.FromJson<SaveData>(LoadedData);
+        }
+        else                                                                             // if we have no save data to load
+        {
+            data = new SaveData();                                                        // Create a new save data
+        }
+                                                            
+
+    }
+
+
+
+
+
     public void StartGame()
     {
         onPlay.Invoke();
         isPlaying = true;
+        currentScore = 0;       // moved from gameover function to here so the score resets when the game starts
     }
 
 
 
     public void GameOver()
     {
+        
+
+        if (data.highscore < currentScore)
+        { 
+        data.highscore = currentScore;
+         string saveString = JsonUtility.ToJson(data);
+            Save.saveSystem("save", saveString);
+        }
+
+
+        isPlaying = false;                                                    // Reset the score to 0 afte player dies
         onGameOver.Invoke();
-        currentScore = 0;
-        isPlaying = false;                                                                                   // Reset the score to 0 afte player dies
+
+       // currentScore = 0;
+        
     }
 
 
     public string PrettyScore()                    // return the current score                                         
     {
-        return Mathf.RoundToInt(currentScore).ToString();              //roudn off, make easy to display                                                             
+        return Mathf.RoundToInt(currentScore).ToString();              // the Pretty score is to roudn off, make easy to display                                                             
+    }
+
+    public string PrettyHighScore()                    // return the current score                                         
+    {
+        return Mathf.RoundToInt(data.highscore).ToString();              // the Pretty score is to roudn off, make easy to display                                                             
     }
 }
