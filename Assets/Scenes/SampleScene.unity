@@ -169,8 +169,10 @@ MonoBehaviour:
   - {fileID: 3715203781355990535, guid: 807e6d9fcbbb01e40af0fd3a829a44fc, type: 3}
   - {fileID: 2811905971466357439, guid: 52610aa8ddea3094aa24eee547c23229, type: 3}
   obstacleParent: {fileID: 1106368995}
-  obstacleSpawnTime: 2
+  obstacleSpawnTime: 3
+  obstacleSpawnTimeFactor: 0.109
   obstacleSpeed: 4
+  obstacleSpeedFactor: 0.2
 --- !u!1 &235370203
 GameObject:
   m_ObjectHideFlags: 0

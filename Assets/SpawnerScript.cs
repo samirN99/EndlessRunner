@@ -8,15 +8,32 @@ public class SpawnerScript : MonoBehaviour
     [SerializeField] private GameObject[] obstaclePrefabs;
 
     [SerializeField] private Transform obstacleParent;
-    public float obstacleSpawnTime = 2f;
-    public float obstacleSpeed = 1f;
+    public float obstacleSpawnTime = 3f;
+    [Range(0, 1)] public float obstacleSpawnTimeFactor = 0.1f;
+    public float obstacleSpeed = 4f;
+    [Range(0, 1)] public float obstacleSpeedFactor = 0.2f;
+
+    private float _obstacleSpawnTime;
+    private float _obstacleSpeed;
 
     private float timeUntilObstacleSpawn;
+    private float timeAlive;
+
+   
+
+
+
+
+
 
 
     private void Start()
     {
-        GameManager.Instance.onGameOver.AddListener(ClearObstacles);
+        GameManager.Instance.onGameOver.AddListener(ClearObstacles);                     //this is going to clear the obstacles when player dies
+
+        GameManager.Instance.onPlay.AddListener(ResetFactors);                           //this is going to restart the time when player dies
+
+
     }
 
 
@@ -25,6 +42,10 @@ public class SpawnerScript : MonoBehaviour
     {
         if (GameManager.Instance.isPlaying)
         {
+            timeAlive += Time.deltaTime;
+
+            CalculateFactors();
+
             SpawnLoop();
         }
     }
@@ -34,13 +55,19 @@ public class SpawnerScript : MonoBehaviour
     {
         timeUntilObstacleSpawn += Time.deltaTime;
 
-        if (timeUntilObstacleSpawn >= obstacleSpawnTime)
+        if (timeUntilObstacleSpawn >= _obstacleSpawnTime)
         {
             Spawn();
             timeUntilObstacleSpawn = 0f;
         }
 
         
+    }
+
+    private void CalculateFactors ()
+    {
+        _obstacleSpawnTime = obstacleSpawnTime / Mathf.Pow(timeAlive, obstacleSpawnTimeFactor);     //this is going to increase the speed of the obstacles over time
+        _obstacleSpeed = obstacleSpeed * Mathf.Pow(timeAlive, obstacleSpeedFactor);                 
     }
 
     private void ClearObstacles()
@@ -51,7 +78,13 @@ public class SpawnerScript : MonoBehaviour
         }
     }
 
+    private void ResetFactors()
+    {
+        timeAlive = 1f;
+         _obstacleSpawnTime = obstacleSpawnTime;
+         _obstacleSpeed = obstacleSpeed;
 
+}
     private void Spawn()
     {
         GameObject obstacleToSpawn = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
@@ -60,7 +93,7 @@ public class SpawnerScript : MonoBehaviour
         spawnedObstacle.transform.parent = obstacleParent;
 
         Rigidbody2D obstacleRb = spawnedObstacle.GetComponent<Rigidbody2D>();
-        obstacleRb.velocity = Vector2.left * obstacleSpeed;
+        obstacleRb.velocity = Vector2.left * _obstacleSpeed;
     }
 
 
