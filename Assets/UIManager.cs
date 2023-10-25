@@ -5,15 +5,30 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 { 
-   [SerializeField] private TextMeshProUGUI scoreUI;                // Reference to the score text
+   [SerializeField] private TextMeshProUGUI scoreUI;              //refers to:   //  score text
+   [SerializeField] private GameObject startMenuUI;                              //  play button
+   [SerializeField] private GameObject gameOverUI;                               // game over screen
+
 
     GameManager gm;                                             // game manager reference
 
     private void Start()
     {
         gm = GameManager.Instance;                             // Get the game manager instance
-
+        gm.onGameOver.AddListener(ActivateGameOverUI);         // Add the game over screen to the game manager
     }
+
+    public void PlayButtonHandler()
+    {
+        gm.StartGame();                                         // Start calling handler from Game Manager script when play button is pressed
+      //  startMenuUI.SetActive(false);                          // Disable the play button when pressed
+    }
+
+    public void ActivateGameOverUI()
+    { 
+    gameOverUI.SetActive(true);                                // Activate the game over screen when player dies
+    }
+    
 
 
     private void OnGUI()

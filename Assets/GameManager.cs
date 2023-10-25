@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,19 +24,30 @@ public class GameManager : MonoBehaviour
             currentScore += Time.deltaTime;                                                // Add 1 to the score every second
         }
 
-        if(Input.GetKeyDown("k"))
-        {
-            isPlaying = true;
-        }
+                                                                                              /*      if(Input.GetKeyDown("k"))
+                                                                                                {
+                                                                                                 isPlaying = true;
+                                                                                                }
+                                                                                             */
     }
 
 
+    public UnityEvent  onPlay = new UnityEvent();
+    public UnityEvent onGameOver = new UnityEvent();
+
+
+    public void StartGame()
+    {
+        onPlay.Invoke();
+        isPlaying = true;
+    }
 
 
 
     public void GameOver()
     {
-        currentScore = 0f;
+        onGameOver.Invoke();
+        currentScore = 0;
         isPlaying = false;                                                                                   // Reset the score to 0 afte player dies
     }
 
