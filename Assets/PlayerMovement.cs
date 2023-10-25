@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpTime = 0.3f;
     [SerializeField] private Transform FlameBoy;
 
+
     //for the crouch
     [SerializeField] private float crouchH = 0.2f;
 
